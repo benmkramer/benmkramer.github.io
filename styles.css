@@ -1,0 +1,139 @@
+/* GEOcities-inspired maximalist theme (offline-friendly) */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body.geo {
+  margin: 0;
+  color: #fff;
+  line-height: 1.5;
+  font-family: "Comic Sans MS", "Comic Sans", Impact, "Trebuchet MS", cursive, sans-serif;
+  /* Tiled background using a tiny inline SVG */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect width='24' height='24' fill='%2300052b'/%3E%3Cpath d='M0 0h12v12H0z' fill='%2300e5ff' opacity='.22'/%3E%3Cpath d='M12 12h12v12H12z' fill='%23ff00f2' opacity='.16'/%3E%3Cpath d='M0 12h12v12H0z' fill='%23ffff00' opacity='.12'/%3E%3C/svg%3E");
+  image-rendering: pixelated;
+}
+
+.page-wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  background: rgba(0,0,0,0.35);
+  border: 8px ridge #ff00f2;
+}
+
+.banner {
+  padding: 8px;
+  text-align: center;
+  background: linear-gradient(90deg, #ff00f2, #00e5ff, #ffff00, #ff00f2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #fff;
+}
+
+.banner h1 {
+  margin: 10px 0 4px;
+  font-size: 42px;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #00e5ff;
+}
+.subtitle { margin: 0 0 8px; font-style: italic; text-shadow: 1px 1px 0 #000; }
+
+.rainbow { background-image: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.blink { animation: blink 1s steps(2, start) infinite; }
+@keyframes blink { to { visibility: hidden; } }
+
+.rainbow-rule {
+  height: 10px;
+  border: none;
+  background: repeating-linear-gradient(
+    90deg,
+    red 0 16px,
+    orange 16px 32px,
+    yellow 32px 48px,
+    green 48px 64px,
+    cyan 64px 80px,
+    blue 80px 96px,
+    violet 96px 112px
+  );
+}
+
+.layout { width: 100%; border-collapse: collapse; }
+.layout td { vertical-align: top; }
+.sidebar {
+  width: 240px;
+  background: #00131f;
+  border-right: 6px groove #00e5ff;
+  padding: 12px;
+}
+.content { padding: 14px; }
+
+.badge {
+  background: repeating-linear-gradient(45deg, #ff0, #ff0 8px, #000 8px, #000 16px);
+  color: #000;
+  font-weight: 900;
+  padding: 8px 10px;
+  text-align: center;
+  border: 4px outset #fff200;
+  margin-bottom: 12px;
+}
+
+.nav90s { display: grid; gap: 10px; margin-bottom: 12px; }
+.button-3d {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(#3a00ff, #00008b);
+  border: 4px outset #7aa2ff;
+  padding: 8px 10px;
+  text-align: center;
+  text-shadow: 1px 1px 0 #000;
+}
+.button-3d:active { border-style: inset; }
+
+.counter {
+  margin: 8px 0 12px;
+  font-family: "Courier New", Courier, monospace;
+  background: #000;
+  color: #0f0;
+  padding: 6px 8px;
+  border: 4px inset #2b2b2b;
+}
+
+.sticker { display: inline-block; margin: 6px 0; padding: 4px 6px; background: #ff00f2; color: #000; font-weight: 800; border: 3px ridge #fff; }
+.muted { color: #bfeaff; opacity: 0.7; }
+
+.panel { margin: 10px 0; padding: 10px; border: 6px ridge #00e5ff; background: rgba(0,0,0,0.4); }
+.panel h2 { margin: 0 0 6px; text-shadow: 2px 2px 0 #000; letter-spacing: 1px; }
+.sparkle { animation: twinkle 1.2s infinite; }
+@keyframes twinkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+.bullets { list-style: none; padding: 0; }
+.bullets li { margin: 6px 0; }
+.bullets li span { color: #ffff00; margin-right: 6px; text-shadow: 1px 1px 0 #000; }
+
+.proj-table { width: 100%; border-collapse: separate; border-spacing: 10px; }
+.card90s { padding: 10px; border: 6px groove #ff00f2; background: linear-gradient(180deg, rgba(255,0,242,0.25), rgba(0,229,255,0.15)); box-shadow: 0 0 20px rgba(0,229,255,0.4); }
+.card90s h3 { margin: 0 0 6px; text-shadow: 2px 2px 0 #000; }
+.badge-link { display: inline-block; margin-right: 8px; padding: 4px 6px; background: #00e5ff; color: #000; text-decoration: none; border: 3px outset #fff; }
+.badge-link:active { border-style: inset; }
+
+.links90s { list-style: square; }
+.links90s a { color: #00e5ff; text-decoration: underline; font-weight: 800; }
+
+.footer { text-align: center; padding: 10px; font-size: 14px; }
+.webring { display: flex; justify-content: center; gap: 16px; margin: 6px 0; }
+.webring a { color: #ffff00; text-decoration: none; font-weight: 900; text-shadow: 1px 1px 0 #000; }
+
+/* Starfield overlay */
+.starfield { pointer-events: none; position: fixed; inset: 0; background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,.25) 0 1px, transparent 1px), radial-gradient(circle at 80% 60%, rgba(255,255,255,.2) 0 1.2px, transparent 1.2px); background-size: 1200px 1200px, 900px 900px; animation: drift 60s linear infinite; }
+@keyframes drift { 0% { background-position: 0 0, 0 0; } 100% { background-position: 1200px 1200px, -900px -900px; } }
+
+/* Cursor star trail */
+.trail { position: absolute; pointer-events: none; animation: floatfade 1.4s ease-out forwards; line-height: 1; }
+@keyframes floatfade { from { transform: translateY(0) scale(1); opacity: 1; } to { transform: translateY(-18px) scale(0.6); opacity: 0; } }
+
+/* Marquee tweaks (yes, we’re doing this) */
+marquee { color: #fff; background: #000; border-top: 4px groove #00e5ff; border-bottom: 4px ridge #ff00f2; padding: 6px; }
+
+/* Small screens still get chaos */
+@media (max-width: 720px) {
+  .sidebar { width: 180px; }
+  .banner h1 { font-size: 32px; }
+  .page-wrap { border-width: 6px; }
+}

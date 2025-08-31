@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ben Kramer — Home</title>
+    <meta name="description" content="Ben Kramer in the Bay Area with two cats and one dog. A gloriously retro personal homepage." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="geo">
+    <div class="starfield" aria-hidden="true"></div>
+    <div class="page-wrap">
+      <header class="banner">
+        <marquee behavior="alternate" scrollamount="8">✨ WELCOME TO <span class="blink">MY WEBSITE</span> ✨ — BEST VIEWED IN 800×600 — SAY HI ON LINKEDIN! ✨</marquee>
+        <h1>WELCOME TO BEN'S <span class="rainbow">HOME PAGE!!!</span></h1>
+        <p class="subtitle">Powered by Huel</p>
+        <hr class="rainbow-rule" />
+      </header>
+
+      <table class="layout" role="presentation">
+        <tr>
+          <td class="sidebar">
+            <div class="badge">UNDER CONSTRUCTION</div>
+            <nav class="nav90s">
+              <a href="#about" class="button-3d">About Me</a>
+              <a href="#pets" class="button-3d">My Pets</a>
+              <a href="#links" class="button-3d">Cool Links</a>
+            </nav>
+            <div class="counter">
+              Visitors:
+              <span id="hits">42069</span>
+            </div>
+          </td>
+          <td class="content">
+            <section id="about" class="panel">
+              <h2><span class="sparkle">✹</span> ABOUT ME <span class="sparkle">✹</span></h2>
+              <p>
+                Hi, I'm Ben 👋
+
+                I'm building AI software like <a target="_blank" href="https://reforge.com/insights">Insights</a>, <a target="_blank" href="https://reforge.com/build">Build</a> and others at Reforge. We're helping our customers build the right products faster and better than ever before.
+
+                <a target="_blank" href="https://www.reforge.com/careers">Come work with a great team</a>
+              </p>
+              <ul class="bullets">
+                <li><span>★</span> Successfully feeding 2 cats and 1 dog every day</li>
+                <li><span>★</span> Does human activities sometimes</li>
+              </ul>
+            </section>
+
+            <hr class="rainbow-rule" />
+
+            <section id="pets" class="panel">
+              <h2>fluff</h2>
+              <table class="proj-table" role="presentation">
+                <tr>
+                  <td>
+                    <div class="card90s">
+                      <h3>Millie</h3>
+                      <p><img src="images/dog.jpg" alt="My dog" style="max-height:240px;max-width:100%;height:auto;display:block;border:4px ridge #00e5ff" /></p>
+                      <p>unlimited happiness</p>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="card90s">
+                      <h3>Shirley</h3>
+                      <p><img src="images/cat-1.jpg" alt="My cat (1)" style="max-width:100%;height:auto;display:block;border:4px ridge #00e5ff" /></p>
+                      <p>extrovert girl</p>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="card90s">
+                      <h3>Nemo</h3>
+                      <p><img src="images/cat-2.jpg" alt="My cat (2)" style="max-width:100%;height:auto;display:block;border:4px ridge #00e5ff" /></p>
+                      <p>shy boy</p>
+                    </div>
+                  </td>
+                  <td>
+                    <!-- leave empty to keep the grid even -->
+                  </td>
+                </tr>
+              </table>
+            </section>
+
+            <hr class="rainbow-rule" />
+
+            <section id="links" class="panel">
+              <h2>COOL LINKS</h2>
+              <ul class="links90s">
+                <li><a href="https://github.com/benmkramer" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/benmkramer" target="_blank" rel="noopener">LinkedIn</a></li>
+              </ul>
+            </section>
+
+          </td>
+        </tr>
+      </table>
+
+      <footer class="footer">
+        <hr class="rainbow-rule" />
+        <p>
+          <span class="blink">UNDER CONSTRUCTION</span> — Last updated: <span id="lastmod"></span>
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      // Last updated
+      (function(){
+        const el = document.getElementById('lastmod');
+        if (el) el.textContent = document.lastModified;
+      })();
+
+      // Cursor trail (random emojis, spaced and longer-lived)
+      (function(){
+        const MAX = 50;               // allow a few more on screen
+        const LINGER_MS = 1400;       // keep them around longer
+        const MIN_DIST = 16;          // min pixels moved before dropping next
+        const EMOJIS = ['🐶','🐱','🐾','✨','💫','🌟','😺','😸','😻','🎉'];
+        const body = document.body;
+        const live = new Set();
+        let lastX = null, lastY = null;
+
+        function drop(x, y) {
+          const s = document.createElement('span');
+          s.className = 'trail';
+          s.textContent = EMOJIS[(Math.random() * EMOJIS.length) | 0];
+          const jitter = () => (Math.random() * 12 - 6); // slight random spread
+          s.style.left = (x + jitter()) + 'px';
+          s.style.top = (y + jitter()) + 'px';
+          s.style.fontSize = (16 + Math.random() * 12) + 'px';
+          body.appendChild(s);
+          live.add(s);
+          setTimeout(() => { s.remove(); live.delete(s); }, LINGER_MS);
+          if (live.size > MAX) {
+            const first = live.values().next().value; first.remove(); live.delete(first);
+          }
+        }
+
+        window.addEventListener('mousemove', (e) => {
+          const { pageX: x, pageY: y } = e;
+          if (lastX === null) { lastX = x; lastY = y; drop(x, y); return; }
+          const dx = x - lastX, dy = y - lastY;
+          if (dx*dx + dy*dy >= MIN_DIST*MIN_DIST) {
+            lastX = x; lastY = y;
+            drop(x, y);
+          }
+        });
+      })();
+    </script>
+  </body>
+  </html>
